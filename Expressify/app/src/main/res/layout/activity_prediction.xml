@@ -2,21 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foregroundTint="#03A9F4"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/text_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Report"
-        android:background="#8FCED6"
-        android:textSize="24sp"
-        android:textColor="#000000"
-        android:padding="16dp"
-        android:textAlignment="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:background="#8FCED6"
+        android:padding="16dp"
+        android:text="Report"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -59,20 +60,23 @@
 
     </androidx.cardview.widget.CardView>
 
+
     <Button
         android:id="@+id/home"
-        android:layout_width="112dp"
+        android:layout_width="246dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/cardView"
         android:layout_alignStart="@+id/cardView"
-        android:layout_alignEnd="@+id/cardView"
+
+
         android:layout_alignBottom="@+id/cardView"
         android:layout_gravity="center"
-        android:layout_marginStart="131dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="-86dp"
-
-
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="-73dp"
         android:background="@drawable/myborder"
+        android:backgroundTint="#03A9F4"
         android:text="Home"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
