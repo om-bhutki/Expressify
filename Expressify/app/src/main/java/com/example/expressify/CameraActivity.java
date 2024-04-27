@@ -10,7 +10,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,9 +21,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import java.util.HashMap;
 
-//import org.opencv.android.BaseLoaderCallback;
+
 import org.opencv.android.CameraBridgeViewBase;
-// import org.opencv.android.LoaderCallbackInterface;
+
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -60,30 +60,13 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
 
     private ImageView flipCamera;
 
-    private SharedPreferences sharedPreferences;
-    private String mostFrequentValue;
+
+   // private String mostFrequentValue;
 
     private facialExpressionRecognition facialExpressionRecognition;
 
     private int index = 0;
-//    private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
-//        @Override
-//        public void onManagerConnected(int status) {
-//            switch (status){
-//                case LoaderCallbackInterface
-//                        .SUCCESS:{
-//                    Log.i(TAG,"OpenCv Is loaded");
-//                    mOpenCvCameraView.enableView();
-//                }
-//                default:
-//                {
-//                    super.onManagerConnected(status);
-//
-//                }
-//                break;
-//            }
-//        }
-//    };
+
 
     public CameraActivity(){
         Log.i(TAG,"Instantiated new "+this.getClass());
@@ -264,11 +247,6 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         });
 
         return mRgba;
-//        Mat smallerFrame = new Mat();
-//        Size newSize = new Size(320, 240); // Adjust the size as nee  ded
-//        Imgproc.resize(mRgba, smallerFrame, newSize);
-
-        //return smallerFrame;
 
     }
 
@@ -335,8 +313,6 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     public interface OnMostFrequentValueListener {
         void onMostFrequentValue(String mostFrequentValue);
     }
-    private String getMostFrequentValue() {
-        return mostFrequentValue;
-    }
+
 
 }
