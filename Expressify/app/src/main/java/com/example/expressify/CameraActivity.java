@@ -25,12 +25,14 @@ import java.util.HashMap;
 import org.opencv.android.CameraBridgeViewBase;
 // import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,10 +58,14 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     private DatabaseReference mDatabase;
     private String parentKey;
 
+    private ImageView flipCamera;
+
     private SharedPreferences sharedPreferences;
     private String mostFrequentValue;
 
     private facialExpressionRecognition facialExpressionRecognition;
+
+    private int index = 0;
 //    private BaseLoaderCallback mLoaderCallback =new BaseLoaderCallback(this) {
 //        @Override
 //        public void onManagerConnected(int status) {
@@ -121,6 +127,7 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         emotionT = findViewById(R.id.emotion);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCameraPermissionGranted();
+        flipCamera = findViewById(R.id.flip_button);
         mOpenCvCameraView.setCameraIndex(0);
         mOpenCvCameraView.setCvCameraViewListener(this);
         mOpenCvCameraView.enableFpsMeter();
@@ -135,6 +142,17 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         }catch (IOException e){
             e.printStackTrace();
         }
+
+        flipCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                swapCamera();
+
+
+
+            }
+        });
 
         Button StopButton = (Button) findViewById(R.id.stop_button);
         StopButton.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +183,13 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         });
 
 
+    }
+
+    private void swapCamera() {
+        index = index^1;
+        mOpenCvCameraView.disableView();
+        mOpenCvCameraView.setCameraIndex(index);
+        mOpenCvCameraView.enableView();
     }
 
     @Override
@@ -216,6 +241,11 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame){
         mRgba=inputFrame.rgba();
         mGray=inputFrame.gray();
+
+        if (index == 1){
+            Core.flip(mRgba,mRgba,-1);
+            Core.flip(mGray,mGray,-1);
+        }
 
 
 
