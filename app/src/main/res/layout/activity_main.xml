@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Expressify"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingBottom="24dp"
+        android:textColor="@color/black" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/camera_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Camera"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:icon="@drawable/flip"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:cornerRadius="8dp"
+        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeWidth="1dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/chatbot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mental Health Chatbot"
+        app:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/chat"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:cornerRadius="8dp"
+        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeWidth="1dp" />
+
+</LinearLayout>
