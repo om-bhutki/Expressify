@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@color/background">
+
+    <!-- Header Text -->
+    <TextView
+        android:id="@+id/loginHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/doto"
+        android:gravity="center"
+        android:text="Login to track your emotions"
+        android:textColor="@color/vintage"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- Email Input -->
+    <EditText
+        android:id="@+id/emailEditText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:hint="Email"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/black"
+        android:padding="12dp" />
+
+    <!-- Password Input -->
+    <EditText
+        android:id="@+id/passwordEditText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:minHeight="48dp"
+        android:inputType="textPassword"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/black"
+        android:padding="12dp" />
+
+    <!-- Login Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/gradient"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:cornerRadius="12dp"
+        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeWidth="2dp"
+        android:textColor="@color/white"
+        android:padding="12dp" />
+
+    <!-- Register Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account? Register"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/navy"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:cornerRadius="12dp"
+        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeWidth="2dp"
+        android:textColor="@color/white"
+        android:padding="12dp" />
+
+</LinearLayout>

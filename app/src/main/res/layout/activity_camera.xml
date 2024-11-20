@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <org.opencv.android.JavaCameraView
         android:id="@+id/frame_Surface"
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#2196F3"
+            android:backgroundTint="@color/navy"
             android:src="@drawable/flip"
             android:text="Stop" />
 
@@ -37,7 +38,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="80dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#2196F3"
+            android:backgroundTint="@color/beachblue"
             android:src="@drawable/flip"
 
             android:text="Flip Camera"

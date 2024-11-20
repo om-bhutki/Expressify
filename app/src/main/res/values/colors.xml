@@ -2,8 +2,8 @@
 <resources>
 
 
-    <color name="colorPrimary">#6200EE</color> <!-- Purple -->
-    <color name="colorPrimaryDark">#3700B3</color> <!-- Dark Purple -->
+    <color name="colorPrimary">#FA812F</color> <!-- Purple -->
+    <color name="colorPrimaryDark">#FA812F</color> <!-- Dark Purple -->
     <color name="colorAccent">#03DAC5</color> <!-- Teal -->
 
     <!-- Text Colors -->
@@ -12,8 +12,20 @@
     <color name="grey">#B0BEC5</color> <!-- Grey for secondary text -->
 
     <!-- Background Colors -->
-    <color name="background">#F5F5F5</color> <!-- Light Grey -->
+    <color name="background">#FEF3E2</color> <!-- Light Grey -->
     <color name="cardBackground">#FFFFFF</color> <!-- White for cards -->
+
+
+    <color name="colorPrimaryLight">#FA812F</color>
+    <color name="colorSecondaryLight">#FFBF61</color>
+    <color name="blue">#EC8305</color>
+    <color name="navy">#FA812F</color>
+    <color name="sea">#F3C623</color>
+    <color name="gradient">#FAB12F</color>
+    <color name="beachblue">#FEEC37</color>
+    <color name="vintage">#FA4032</color>
+
+
 
     <!-- Error Color -->
     <color name="colorError">#B00020</color> <!-- Red -->

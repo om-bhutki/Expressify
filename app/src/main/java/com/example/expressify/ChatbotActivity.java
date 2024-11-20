@@ -42,7 +42,7 @@ public class ChatbotActivity extends AppCompatActivity {
         recyclerView.setAdapter(messageAdapter);
 
         // Initialize the API service
-        apiService = RetrofitClient.getClient("https://chatbot-gemini-4xtz.onrender.com/").create(ApiService.class);
+        apiService = RetrofitClient.getClient("https://romantic-purpose-production.up.railway.app/").create(ApiService.class);
 
         // Button click listener to send message
         buttonSend.setOnClickListener(new View.OnClickListener() {
@@ -50,13 +50,14 @@ public class ChatbotActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String messageText = editTextMessage.getText().toString();
                 if (!messageText.isEmpty()) {
+
                     // Add user message to the list
                     messageList.add(new Message("User", messageText));
                     messageAdapter.notifyItemInserted(messageList.size() - 1);
                     recyclerView.scrollToPosition(messageList.size() - 1);
 
                     // Send the message to the API
-                    sendMessageToApi(messageText);
+                    sendMessageToApi(messageText + " Short answer");
                     editTextMessage.setText(""); // Clear the input field
                 }
             }

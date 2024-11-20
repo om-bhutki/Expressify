@@ -167,11 +167,11 @@ public class facialExpressionRecognition {
 
         }else if (emotion_v >= 2.5 & emotion_v < 3.5) {
 
-            val = "Happy/Neutral";
+            val = "Neutral";
 
         }else if (emotion_v >= 3.5 & emotion_v < 4.5) {
 
-            val = "Sad/Disgust";
+            val = "Sad";
 
         }else if (emotion_v >= 4.5 & emotion_v < 5.5) {
 

@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Button chatbot_btn = findViewById(R.id.chatbot);
         chatbot_btn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,ChatbotActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP)));
 
+        Button dash_btn = findViewById(R.id.dashboard);
+        dash_btn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,DashboardActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+
 
     }
 }

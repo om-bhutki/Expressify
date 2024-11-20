@@ -11,7 +11,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import java.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +21,8 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -43,6 +47,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -59,6 +64,7 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     private String parentKey;
 
     private ImageView flipCamera;
+    private String userId;
 
 
    // private String mostFrequentValue;
@@ -98,9 +104,18 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
 
 
         mOpenCvCameraView = findViewById(R.id.frame_Surface);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        parentKey = "Person-" + mDatabase.push().getKey();
 
+        //parentKey = "Person-" + mDatabase.push().getKey();
+        SharedPreferences prefs = getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+        userId = prefs.getString("userId", null);
+
+        if (userId == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(CameraActivity.this, LoginActivity.class));
+            finish();
+            return;
+        }
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
             // If it's the first time, generate a new parent key
 
@@ -137,26 +152,12 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
             }
         });
 
-        Button StopButton = (Button) findViewById(R.id.stop_button);
+        Button StopButton = findViewById(R.id.stop_button);
         StopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mOpenCvCameraView.disableView();
-                retrieveDataAndFindMostFrequentValue(parentKey, new OnMostFrequentValueListener() {
-                    @Override
-                    public void onMostFrequentValue(String mostFrequentValue) {
-
-                        if (mostFrequentValue != null) {
-                            // Do something with the most frequent value
-                            showToast("Most frequent value: " + mostFrequentValue);
-
-                        } else {
-                            showToast("No data found under parent key: " + parentKey);
-                        }
-
-                        startActivity(new Intent(CameraActivity.this,PredictionActivity.class).putExtra("mostFreq",mostFrequentValue));
-                    }
-                });
+                startActivity(new Intent(CameraActivity.this,MainActivity.class));
 
 
                 //Toast.makeText(getApplicationContext(),"Stopped Camera",Toast.LENGTH_SHORT).show();
@@ -238,7 +239,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
             public void run() {
                 String emotion = facialExpressionRecognition.getEmotion_s();
                 emotionT.setText(emotion);
-                String parentkey = saveDataToDatabase(emotion);
+                detectEmotion(emotion);
+                //String parentkey = saveDataToDatabase(emotion);
                 //retrieveDataAndFindMostFrequentValue(parentkey);
 
 
@@ -249,6 +251,33 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         return mRgba;
 
     }
+
+    private void detectEmotion(String emotion) {
+        // Get the current date
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        // Reference to the user's date-specific node
+        DatabaseReference userDateRef = mDatabase.child(userId).child(currentDate);
+
+        // Generate a unique key for each emotion
+        String emotionKey = userDateRef.push().getKey();
+
+        if (emotionKey != null) {
+            // Save the emotion under the date node
+            Map<String, Object> emotionData = new HashMap<>();
+            emotionData.put(emotionKey, emotion);
+
+            userDateRef.updateChildren(emotionData)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Log.d("EmotionDetection", "Emotion saved successfully");
+                        } else {
+                            Log.d("EmotionDetection", "Failed to save emotion: " + task.getException().getMessage());
+                        }
+                    });
+        }
+    }
+
 
     private String saveDataToDatabase(String data) {
         // Generate a new key for the child using push()

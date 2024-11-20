@@ -7,42 +7,67 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/background"> <!-- Custom gradient background -->
 
+    <!-- Text view for the title -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/doto"
         android:text="Welcome to Expressify"
-        android:textSize="24sp"
+        android:textColor="@color/vintage"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:paddingBottom="24dp"
-        android:textColor="@color/black" />
+        android:layout_marginBottom="32dp"
+    /> <!-- Larger margin for spacing -->
 
+    <!-- Camera button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/camera_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Start Camera"
         android:layout_marginBottom="16dp"
-        app:backgroundTint="@color/colorPrimary"
-        app:icon="@drawable/flip"
+        app:backgroundTint="@color/gradient"
+        app:icon="@drawable/camera"
         app:iconGravity="textStart"
         app:iconPadding="8dp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="12dp"
         app:strokeColor="@color/colorPrimaryDark"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="2dp"
+        android:textColor="@color/white"
+        android:padding="12dp" /> <!-- Added padding for better button feel -->
 
+    <!-- Mental Health Chatbot button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/chatbot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Mental Health Chatbot"
-        app:backgroundTint="@color/colorAccent"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/vintage"
         app:icon="@drawable/chat"
         app:iconGravity="textStart"
         app:iconPadding="8dp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="12dp"
         app:strokeColor="@color/colorPrimaryDark"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="2dp"
+        android:textColor="@color/white"
+        android:padding="12dp" />
 
+    <!-- Dashboard button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        app:backgroundTint="@color/navy"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/dashboard"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:strokeColor="@color/colorPrimaryDark"
+        app:strokeWidth="2dp"
+        android:textColor="@color/white"
+        android:padding="12dp" />
 </LinearLayout>
