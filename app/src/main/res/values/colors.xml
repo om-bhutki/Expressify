@@ -24,6 +24,15 @@
     <color name="gradient">#FAB12F</color>
     <color name="beachblue">#FEEC37</color>
     <color name="vintage">#FA4032</color>
+    <color name="scandal">#A66E38</color>
+
+    <color name="soft_yellow">#FFD166</color>
+    <color name="goldenrod">#FFB700</color>
+    <color name="sunset_orange">#FF7F51</color>
+    <color name="peach">#FF9E80</color>
+    <color name="amber">#FFC107</color>
+    <color name="burnt_orange">#FF6F00</color>
+    <color name="rust_brown">#8D4A43</color>
 
 
 

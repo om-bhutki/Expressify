@@ -7,4 +7,31 @@
 Assess the Situation: Quickly assess the situation to understand what\'s happening and determine the level of urgency. Gather as much information as you can to make informed decisions.
 Adaptability: Be flexible and adaptable in your response to surprises. Recognize that plans may need to change, and be open to adjusting your approach accordingly.</string>
 <string name="angry">Simple relaxation tools, such as deep breathing and relaxing imagery, can help calm down angry feelings. There are books and courses that can teach you relaxation techniques, and once you learn the techniques, you can call upon them in any situation.</string>
+<string name="low">"Tips to improve happiness:\n" +
+                    "- Consider meditation or mindfulness to relax your mind.\n" +
+                    "- Engage in physical activity to boost mood and energy.\n" +
+                    "- Set small, achievable goals to create a sense of progress.\n" +
+                    "- Try to spend time in nature or green spaces.\n" +
+                    "- Connect with supportive friends or join a community group.\n" +
+                    "- Keep a journal to reflect on positive experiences."
+</string>
+<string name="high">
+"Tips to improve happiness:\n" +
+                    "- Keep up the good work!\n" +
+                    "- Continue practicing gratitude.\n" +
+                    "- Celebrate small wins and achievements.\n" +
+                    "- Spend quality time with loved ones.\n" +
+                    "- Stay active and engage in hobbies you enjoy.\n" +
+                    "- Reflect on the things that make you happy."
+</string>
+<string name="gap">
+
+"Tips to improve happiness:\n" +
+                    "- Try to reduce stress on low days.\n" +
+                    "- Focus on activities that bring joy.\n" +
+                    "- Maintain a consistent daily routine.\n" +
+                    "- Avoid overloading yourself with tasks.\n" +
+                    "- Practice mindfulness to stay in the moment.\n" +
+                    "- Talk to friends or family about your feelings."
+</string>
 </resources>

@@ -161,7 +161,7 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
         PieDataSet dataSet = new PieDataSet(entries, "Emotion Distribution");
-        dataSet.setColors(new int[]{R.color.colorSecondaryLight,R.color.gradient,R.color.vintage,R.color.beachblue,R.color.navy,R.color.blue}, getApplicationContext());
+        dataSet.setColors(new int[]{R.color.soft_yellow,R.color.goldenrod,R.color.sunset_orange,R.color.peach,R.color.amber,R.color.burnt_orange,R.color.rust_brown}, getApplicationContext());
         dataSet.setValueTextSize(14f);
 
         PieData pieData = new PieData(dataSet);

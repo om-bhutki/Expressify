@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -25,6 +27,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -103,6 +106,9 @@ public class TimelineActivity extends AppCompatActivity {
     }
 
     private void populateTimelineChart(ArrayList<String> dates, Map<String, Integer> happinessCounts) {
+        // Reverse the dates to display the oldest date first
+        Collections.reverse(dates);
+
         ArrayList<Entry> entries = new ArrayList<>();
         int index = 0;
 
@@ -143,7 +149,6 @@ public class TimelineActivity extends AppCompatActivity {
                         return parsedDate != null ? sdf.format(parsedDate) : ""; // Return the day abbreviation (Mon, Tue, etc.)
                     } catch (ParseException e) {
                         Log.d("Date", "Error parsing date: " + dates.get(idx));
-
                     }
                 }
                 return ""; // Return empty if the index is out of bounds
@@ -157,8 +162,43 @@ public class TimelineActivity extends AppCompatActivity {
         leftAxis.setDrawGridLines(false); // Remove Y-axis gridlines
         timelineChart.getAxisRight().setEnabled(false);
 
+        updateHappinessTips(happinessCounts);
+
         // Refresh chart
         timelineChart.invalidate();
     }
 
+    private void updateHappinessTips(Map<String, Integer> happinessCounts) {
+        // Analyze the happiness data to provide tips
+        int maxHappiness = Collections.max(happinessCounts.values());
+        int minHappiness = Collections.min(happinessCounts.values());
+
+        TextView tipsTextView = findViewById(R.id.happinessTips);
+
+        if (maxHappiness - minHappiness > 10) {
+            // If there's a large fluctuation in happiness
+            tipsTextView.setText(R.string.gap);
+
+            // Show an alert dialog
+            new AlertDialog.Builder(this)
+                    .setTitle("Notice: Fluctuating Happiness Levels")
+                    .setMessage("We have detected considerable fluctuation in your happiness levels. Perhaps talking to an expert might help. Call 1800-599-0019")
+                    .setPositiveButton("Got it", (dialog, which) -> dialog.dismiss()) // Dismiss button
+                    .setCancelable(false) // Prevent dismissal by tapping outside
+                    .show();
+
+            tipsTextView.setText(R.string.gap);
+        } else if (maxHappiness > 7) {
+            // If happiness is generally high
+            tipsTextView.setText(R.string.high);
+        } else {
+            // If happiness is generally low
+            tipsTextView.setText(R.string.low);
+        }
+    }
+
+
 }
+
+
+
